@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CHANDORA</title>
+
+  <!-- Google Font Beispiel (kannst du ändern oder entfernen) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo / Home Button -->
+      <a href="#top" class="logo-button" aria-label="Zur Startseite">
+        <!-- Wenn du ein Logo-Bild hast, statt Text einfach <img> nutzen -->
+        CHANDORA
+      </a>
+
+      <!-- Icons als Buttons -->
+      <nav class="header-actions" aria-label="Hauptaktionen">
+        <button class="icon-button" type="button" aria-label="Mein Konto">
+          <img src="img/icon-user.png" alt="Konto Icon">
+        </button>
+        <button class="icon-button" type="button" aria-label="Wunschliste">
+          <img src="img/icon-heart.png" alt="Herz Icon">
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO-BILD -->
+    <section class="hero">
+      <img src="img/hero-desktop.jpg" alt="Frau mit CHANDORA Armband" class="hero-image">
+    </section>
+
+    <!-- PRODUKT GRID: ERSTE CHARM-REIHE -->
+    <section class="section section-products" id="shop">
+      <div class="container">
+        <div class="product-grid">
+          <!-- Produktkarte 1 -->
+          <article class="product-card">
+            <img src="img/charm-lolli.jpg" alt="Lolli Pop Charm" class="product-image">
+            <h3 class="product-title">Lolli Pop Charm</h3>
+            <p class="product-price">0,99 €</p>
+          </article>
+
+          <!-- Produktkarte 2 -->
+          <article class="product-card">
+            <img src="img/charm-icecream.jpg" alt="Ice Cream Charm" class="product-image">
+            <h3 class="product-title">Ice Cream Charm</h3>
+            <p class="product-price">0,99 €</p>
+          </article>
+
+          <!-- Produktkarte 3 -->
+          <article class="product-card">
+            <img src="img/charm-cloud.jpg" alt="Candy Cloud Charm" class="product-image">
+            <h3 class="product-title">Candy Cloud Charm</h3>
+            <p class="product-price">0,99 €</p>
+          </article>
+
+          <!-- Produktkarte 4 -->
+          <article class="product-card">
+            <img src="img/charm-gumdrops.jpg" alt="Gum Drop Charm" class="product-image">
+            <h3 class="product-title">Gum Drop Charm</h3>
+            <p class="product-price">0,99 €</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- WARUM CHANDORA -->
+    <section class="section section-split section-why">
+      <div class="container split-inner">
+        <div class="split-image">
+          <img src="img/why-chandora.jpg" alt="Frau mit essbarem Charm Armband">
+        </div>
+        <div class="split-content">
+          <h2>Warum CHANDORA?</h2>
+          <p>
+            Wenn Stil und Genuss eins werden. Chandora ist die Verbindung von Schmuck und Süßigkeit – 
+            ein charmantes Spiel zwischen Ästhetik und Vergnügen.
+          </p>
+          <a href="#shop" class="btn btn-primary">Shoppe</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSTALGIA KOLLEKTION -->
+    <section class="section section-split section-nostalgia" id="nostalgia">
+      <div class="container split-inner split-reverse">
+        <div class="split-image">
+          <img src="img/nostalgia-bracelet.jpg" alt="Nostalgia Kollektion Armband">
+        </div>
+        <div class="split-content">
+          <h2>Nostalgia Kollektion</h2>
+          <p>
+            Jeder Charm erzählt eine Geschichte – von sonntäglichen Naschmomenten
+            bis zu bunten Jahrmarktlichtern. Für alle, die Erinnerungen lieber am Handgelenk tragen.
+          </p>
+
+          <div class="product-grid product-grid-small">
+            <article class="product-card">
+              <img src="img/charm-lolli.jpg" alt="Cotton Candy Charm" class="product-image">
+              <h3 class="product-title">Cotton Candy Charm</h3>
+              <p class="product-price">0,99 €</p>
+            </article>
+
+            <article class="product-card">
+              <img src="img/charm-cloud.jpg" alt="Rainbow Charm" class="product-image">
+              <h3 class="product-title">Rainbow Charm</h3>
+              <p class="product-price">0,99 €</p>
+            </article>
+
+            <article class="product-card">
+              <img src="img/charm-gumdrops.jpg" alt="Teddy Treat Charm" class="product-image">
+              <h3 class="product-title">Teddy Treat Charm</h3>
+              <p class="product-price">0,99 €</p>
+            </article>
+
+            <article class="product-card">
+              <img src="img/charm-icecream.jpg" alt="Popcorn Charm" class="product-image">
+              <h3 class="product-title">Popcorn Charm</h3>
+              <p class="product-price">0,99 €</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW ITS MADE -->
+    <section class="section section-split section-how" id="how-its-made">
+      <div class="container split-inner">
+        <div class="split-image">
+          <img src="img/how-its-made.jpg" alt="Konditoren stellen Charms her">
+        </div>
+        <div class="split-content">
+          <h2>How its made?</h2>
+          <p>
+            Mit Liebe gefertigt – in Zusammenarbeit mit einer kleinen Candy-Manufaktur,
+            die jedes Detail von Hand modelliert. Für alle Charms verwenden wir hochwertige, 
+            essbare Materialien, die jeden Tag versüßen.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRACELET HERO + CTA -->
+    <section class="section section-bracelet">
+      <div class="container bracelet-inner">
+        <img src="img/bracelet-hero.jpg" alt="CHANDORA Armband mit mehreren Charms" class="bracelet-image">
+        <div class="bracelet-text">
+          <p class="bracelet-quote">“For those who crave style – literally”</p>
+          <a href="#shop" class="btn btn-secondary">Charms shoppen</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <!-- Fußtext / Hinweis -->
+      <div class="footer-note">
+        <p>
+          In den Details jedes Chandora Talisman 
+          steckt eine tiefere Bedeutung – ein Zeugnis deiner Reise, deines Wachstums 
+          und der Stärke, die dich jeden Tag voranbringt.
+        </p>
+      </div>
+
+      <!-- RECHTLICHES: DESKTOP VERSION (einfach gelistet) -->
+      <section class="legal legal--desktop" aria-label="Rechtliche Hinweise">
+        <h3>Rechtliches</h3>
+        <ul class="legal-list">
+          <li><a href="#">Impressum</a></li>
+          <li><a href="#">Datenschutz</a></li>
+          <li><a href="#">AGB</a></li>
+          <li><a href="#">Widerrufsbelehrung</a></li>
+          <li><a href="#">Cookie-Einstellungen</a></li>
+        </ul>
+      </section>
+
+      <!-- RECHTLICHES: MOBILE VERSION (aufklappbar) -->
+      <section class="legal legal--mobile" aria-label="Rechtliche Hinweise mobil">
+        <details>
+          <summary>Rechtliches</summary>
+          <ul class="legal-list">
+            <li><a href="#">Impressum</a></li>
+            <li><a href="#">Datenschutz</a></li>
+            <li><a href="#">AGB</a></li>
+            <li><a href="#">Widerrufsbelehrung</a></li>
+            <li><a href="#">Cookie-Einstellungen</a></li>
+          </ul>
+        </details>
+      </section>
+
+      <!-- SOCIAL MEDIA ICONS (Bilder als Buttons/Links) -->
+      <div class="footer-bottom">
+        <div class="social-links" aria-label="Social Media">
+          <a href="#" class="social-button" aria-label="Instagram">
+            <img src="img/icon-instagram.png" alt="Instagram Icon">
+          </a>
+          <a href="#" class="social-button" aria-label="TikTok">
+            <img src="img/icon-tiktok.png" alt="TikTok Icon">
+          </a>
+          <a href="#" class="social-button" aria-label="Facebook">
+            <img src="img/icon-facebook.png" alt="Facebook Icon">
+          </a>
+        </div>
+        <div class="footer-logo">
+          CHANDORA
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
