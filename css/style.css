@@ -201,7 +201,59 @@ body {
     color: #000000;
     margin: 0;
 }
+/* ===== Header Badge ===== */
+.icon-button--badge {
+  position: relative;
+}
 
+.badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #ff93a0;
+  color: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  display: none; /* wird per JS eingeblendet, wenn count > 0 */
+}
+
+/* ===== Produkt Like Button (Herz oben rechts) ===== */
+.product-card {
+  position: relative; /* wichtig für absolute Position des Herzens */
+}
+
+.product-like {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: #fff;
+  border-radius: 999px;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-like img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* Zustand: geliked */
+.product-card.is-liked .product-like {
+  background: #fff0f3;
+  outline: 2px solid #ff93a0;
+}
+s
 /* ========== SPLIT-SECTIONS (Bild/Text nebeneinander) ========== */
 
 .section-split {
@@ -235,6 +287,71 @@ body {
 /* How its made neutral */
 .section-how {
     background-color: #ffffff;
+}
+.link-underline {
+  display: inline-block;
+  color: #222;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-weight: 500;
+}
+
+.link-underline:hover {
+  color: #ff73b4;
+}
+
+/* ===== Benefit Section ===== */
+.section-benefits {
+  background: #ffffff;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.benefit-card {
+  background: #f4f4f4;
+  border-radius: 18px;
+  padding: 26px 18px;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.benefit-card h3 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.benefit-card p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* Reveal: Startzustand */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+/* Reveal: sichtbar */
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Desktop: 3 Spalten */
+@media (min-width: 768px) {
+  .benefit-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
 }
 
 /* ========== BRACELET HERO ========== */
