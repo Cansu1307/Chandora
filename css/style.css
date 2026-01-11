@@ -277,7 +277,7 @@ body {
 .split-image img {
     width: 100%;
     height: auto;
-    border-radius: 24px;
+    border-radius: 0px; /*Bild Radius ist hier lol*/
     display: block;
 }
 
@@ -286,8 +286,45 @@ body {
     flex-direction: column;
     gap: 12px;
 }
+/* ========== NOSTALGIA LAYOUT WIE VORLAGE ========== */
 
-/* Nostalgia leicht andere Hintergrundfarbe */
+.section-nostalgia .split-inner {
+  align-items: flex-start;          /* oben bündig wie Vorlage */
+}
+
+/* Spalten */
+.section-nostalgia .nostalgia-left,
+.section-nostalgia .nostalgia-right {
+  flex: 1;
+}
+
+/* Links: Headline, Bild, Text untereinander */
+.section-nostalgia .nostalgia-left {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Headline: 24px + Abstand 10px zum Bild */
+.section-nostalgia .nostalgia-title {
+  font-size: 24px;
+  margin: 0 0 10px 0;               /* 10px zwischen H2 und Bild */
+}
+
+/* Bild exakt 400x500, keine runden Ecken */
+.section-nostalgia .nostalgia-image img {
+  width: 400px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 0;                  /* keine Rundung */
+  display: block;
+}
+
+/* Abstand 20px zwischen Bild und Text */
+.section-nostalgia .nostalgia-description {
+  margin: 20px 0 0 0;                /* 20px zwischen Bild und Text */
+}
+
+/* Nostalgia*/
 .section-nostalgia {
     background-color: #ffffff;
 }
