@@ -20,13 +20,16 @@ body {
     line-height: 1.5;
 }
 
-/* Hilfsklasse für zentrierten Inhalt */
 .container {
     width: 100%;
-    max-width: 1200px;
-    padding: 0 16px;
-    margin: 0 auto;
+    max-width: none;
+    /* keine künstliche Begrenzung */
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    /* keine Zentrierung */
 }
+
 
 /* ========== HEADER ========== */
 
@@ -43,7 +46,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 0;
+
+    padding: 12px 24px;
+    width: 100%;
 }
 
 .logo-button {
@@ -178,8 +183,8 @@ body {
     border-radius: 0px;
     padding: 12px;
     background: #ffffff;
-   
-    text-align: center;
+
+    text-align: left;
 }
 
 .product-image {
@@ -201,63 +206,66 @@ body {
     color: #000000;
     margin: 0;
 }
+
 /* ===== Header Badge ===== */
 .icon-button--badge {
-  position: relative;
+    position: relative;
 }
 
 .badge {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  min-width: 18px;
-  height: 18px;
-  padding: 0 6px;
-  border-radius: 999px;
-  background: #ff93a0;
-  color: #fff;
-  font-size: 12px;
-  line-height: 18px;
-  text-align: center;
-  display: none; /* wird per JS eingeblendet, wenn count > 0 */
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #ff93a0;
+    color: #fff;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    display: none;
+    /* wird per JS eingeblendet, wenn count > 0 */
 }
 
 /* ===== Produkt Like Button (Herz oben rechts) ===== */
 .product-card {
-  position: relative; /* wichtig für absolute Position des Herzens */
+    position: relative;
+    /* wichtig für absolute Position des Herzens */
 }
 
 .product-like {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  border: none;
-  background: #fff;
-  border-radius: 999px;
-  padding: 6px;
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: #fff;
+    border-radius: 999px;
+    padding: 6px;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-like img {
-  width: 16px;
-  height: 16px;
-  display: block;
+    width: 16px;
+    height: 16px;
+    display: block;
 }
 
 /* Zustand: geliked */
 .product-card.is-liked .product-like {
-  background: #fff0f3;
-  outline: 2px solid #ff93a0;
+    background: #fff0f3;
+    outline: 2px solid #ff93a0;
 }
-s
+
 /* ========== SPLIT-SECTIONS (Bild/Text nebeneinander) ========== */
 
 .section-split {
-    background-color: #fffafc;
+    background-color: #ffffff;
 }
 
 .split-inner {
@@ -281,105 +289,128 @@ s
 
 /* Nostalgia leicht andere Hintergrundfarbe */
 .section-nostalgia {
-    background-color: #f7f9ff;
+    background-color: #ffffff;
 }
 
 /* How its made neutral */
 .section-how {
     background-color: #ffffff;
 }
+
 .link-underline {
-  display: inline-block;
-  color: #222;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  font-weight: 500;
+    display: inline-block;
+    color: #222;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    font-weight: 500;
 }
 
 .link-underline:hover {
-  color: #ff73b4;
+    color: #ff73b4;
 }
 
-/* =====  Die drei Vorteile ====*/ 
+/* =====  Die drei Vorteile ====*/
 .section-benefits {
-  background: #ffffff;
+    background: #ffffff;
 }
 
 .benefit-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
 }
 
 .benefit-card {
-  background: #f4f4f4;
-  border-radius: 0px;
-  padding: 26px 18px;
-  min-height: 110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    background: #f4f4f4;
+    border-radius: 0px;
+    padding: 26px 18px;
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .benefit-card h3 {
-  margin: 0;
-  font-size: 1.4rem;
-  font-weight: 500;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 
 .benefit-card p {
-  margin: 6px 0 0;
-  font-size: 0.95rem;
-  color: #333;
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: #333;
 }
 
 /* Reveal: Startzustand */
 .reveal-item {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 600ms ease, transform 600ms ease;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 600ms ease, transform 600ms ease;
 }
 
 /* Reveal: sichtbar */
 .reveal-item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Desktop: 3 Spalten */
 @media (min-width: 768px) {
-  .benefit-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-  }
+    .benefit-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
 }
 
 /* ========== BRACELET HERO ========== */
+
+/* ========== BRACELET HERO (Fix wie Vorlage) ========== */
 
 .section-bracelet {
     padding-bottom: 48px;
 }
 
+/* Container-Beschränkung nur hier aufheben */
+.section-bracelet .container {
+    max-width: none;
+    padding: 0;
+}
+
+/* Layout: Bild oben, Text darunter */
 .bracelet-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    /* Textbereich startet links */
     gap: 16px;
 }
 
+/* Bild nutzt die komplette Breite der Weißfläche (Viewport) */
 .bracelet-image {
-    width: 100%;
-    max-width: 700px;
+    width: 100vw;
+    max-width: none;
     height: auto;
     display: block;
+    margin: 0 auto;
+    /* zentriert bei 100vw, falls Scrollbar/Rendering leicht abweicht */
 }
 
+/* Text linksbündig + wieder angenehme Seiten-Paddings wie restliche Seite */
 .bracelet-text {
-    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+    text-align: left;
 }
+
 
 .bracelet-quote {
     font-style: italic;
+    font-size: 24px;
+    margin-top: 95px;
+    /* Abstand zum Button */
     margin-bottom: 12px;
 }
 

@@ -14,9 +14,8 @@
 
 <body>
 
-    <!-- HEADER -->
     <header class="site-header">
-        <div class="container header-inner">
+        <div class="header-inner">
             <a href="#top" class="logo-button" aria-label="Zur Startseite">CHANDORA</a>
 
             <nav class="header-actions" aria-label="Hauptaktionen">
@@ -24,7 +23,6 @@
                     <img src="img/icon-user.png" alt="Konto Icon">
                 </button>
 
-                <!-- HEADER HEART mit Badge (Aufzählung) -->
                 <button class="icon-button icon-button--badge" id="headerLikeButton" type="button"
                     aria-label="Wunschliste">
                     <img src="img/heart-icon.png" alt="Herz Icon">
@@ -33,6 +31,7 @@
             </nav>
         </div>
     </header>
+
 
     <main id="top">
 
@@ -48,41 +47,50 @@
 
                     <!-- Produktkarte mit Like-Icon -->
                     <article class="product-card" data-product-id="lolli-pop">
-                        <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
-                            <img src="img/heart-icon.png" alt="">
-                        </button>
+                        <div class="product-media">
+                            <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
+                                <img src="img/heart-icon.png" alt="">
+                            </button>
 
-                        <img src="img/charm-lolli.png" alt="Lolli Pop Charm" class="product-image">
+                            <img src="img/charm-lolli.png" alt="Lolli Pop Charm" class="product-image">
+                        </div>
+
                         <h3 class="product-title">Lolli Pop Charm</h3>
                         <p class="product-price">0,99 €</p>
                     </article>
 
                     <article class="product-card" data-product-id="ice-cream">
-                        <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
-                            <img src="img/heart-icon.png" alt="">
-                        </button>
+                        <div class="product-media">
+                            <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
+                                <img src="img/heart-icon.png" alt="">
+                            </button>
 
-                        <img src="img/charm-icecream.png" alt="Ice Cream Charm" class="product-image">
+                            <img src="img/charm-icecream.png" alt="Ice Cream Charm" class="product-image">
+                        </div>
                         <h3 class="product-title">Ice Cream Charm</h3>
                         <p class="product-price">0,99 €</p>
                     </article>
 
                     <article class="product-card" data-product-id="candy-cloud">
-                        <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
-                            <img src="img/heart-icon.png" alt="">
-                        </button>
+                        <div class="product-media">
+                            <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
+                                <img src="img/heart-icon.png" alt="">
+                            </button>
 
-                        <img src="img/charm-cloud.png" alt="Candy Cloud Charm" class="product-image">
+                            <img src="img/charm-cloud.png" alt="Candy Cloud Charm" class="product-image">
+                        </div>
                         <h3 class="product-title">Candy Cloud Charm</h3>
                         <p class="product-price">0,99 €</p>
                     </article>
 
                     <article class="product-card" data-product-id="gum-drop">
-                        <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
-                            <img src="img/heart-icon.png" alt="">
-                        </button>
+                        <div class="product-media">
+                            <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
+                                <img src="img/heart-icon.png" alt="">
+                            </button>
 
-                        <img src="img/charm-gumdrops.png" alt="Gum Drop Charm" class="product-image">
+                            <img src="img/charm-gumdrops.png" alt="Gum Drop Charm" class="product-image">
+                        </div>
                         <h3 class="product-title">Gum Drop Charm</h3>
                         <p class="product-price">0,99 €</p>
                     </article>
@@ -123,25 +131,48 @@
 
                     <div class="product-grid product-grid-small">
                         <article class="product-card">
-                            <img src="img/charm-cotton-candy.png" alt="Cotton Candy Charm" class="product-image">
+                            <div class="product-media">
+                                <button class="product-like" type="button" aria-label="Produkt liken"
+                                    aria-pressed="false">
+                                    <img src="img/heart-icon.png" alt="">
+                                </button>
+                                <img src="img/charm-cotton-candy.png" alt="Cotton Candy Charm" class="product-image">
+                            </div>
                             <h3 class="product-title">Cotton Candy Charm</h3>
                             <p class="product-price">0,99 €</p>
                         </article>
 
                         <article class="product-card">
-                            <img src="img/charm-rainbow.png" alt="Rainbow Charm" class="product-image">
+                            <div class="product-media">
+                                <button class="product-like" type="button" aria-label="Produkt liken"
+                                    aria-pressed="false">
+                                    <img src="img/heart-icon.png" alt="">
+                                </button>
+                                <img src="img/charm-rainbow.png" alt="Rainbow Charm" class="product-image">
+                            </div>
                             <h3 class="product-title">Rainbow Charm</h3>
                             <p class="product-price">0,99 €</p>
                         </article>
 
                         <article class="product-card">
-                            <img src="img/charm-teddy-treat.png" alt="Teddy Treat Charm" class="product-image">
+                            <div class="product-media">
+                                <button class="product-like" type="button" aria-label="Produkt liken"
+                                    aria-pressed="false">
+                                    <img src="img/heart-icon.png" alt="">
+                                </button>
+                                <img src="img/charm-teddy-treat.png" alt="Teddy Treat Charm" class="product-image">
+                            </div>
                             <h3 class="product-title">Teddy Treat Charm</h3>
                             <p class="product-price">0,99 €</p>
                         </article>
 
                         <article class="product-card">
+                            <div class="product-media">
+                        <button class="product-like" type="button" aria-label="Produkt liken" aria-pressed="false">
+                            <img src="img/heart-icon.png" alt="">
+                        </button>
                             <img src="img/charm-popcorn.png" alt="Popcorn Charm" class="product-image">
+                            </div>
                             <h3 class="product-title">Popcorn Charm</h3>
                             <p class="product-price">0,99 €</p>
                         </article>
@@ -197,16 +228,17 @@
             <div class="container bracelet-inner">
                 <img src="img/bracelet-hero.png" alt="CHANDORA Armband" class="bracelet-image">
                 <div class="bracelet-text">
-                    <p class="bracelet-quote">“For those who crave style – literally”</p>
+
 
                     <p>
                         In den Details jedes Chandora Talisman steckt eine tiefere Bedeutung
                         – ein Zeugnis deiner Reise, deines Wachstums und der Stärke,
                         die dich jeden Tag voranbringt.
                     </p>
-
-
                     <a href="#shop" class="btn btn-secondary">Charms shoppen</a>
+                    <p class="bracelet-quote">“For those who crave style – literally”</p>
+
+
                 </div>
             </div>
         </section>
@@ -257,7 +289,7 @@
                         <li><a href="#">Über uns</a></li>
                         <li><a href="#">Nachhaltigkeit</a></li>
                         <li><a href="#">Zutaten & Allergene</a></li>
-                       
+
                     </ul>
                 </details>
             </section>
