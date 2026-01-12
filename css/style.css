@@ -111,7 +111,7 @@ body {
 }
 
 .section p {
-    font-size: 0.95rem;
+    font-size: 17px;
 }
 
 /* Buttons / Call to Action */
@@ -277,7 +277,8 @@ body {
 .split-image img {
     width: 100%;
     height: auto;
-    border-radius: 0px; /*Bild Radius ist hier lol*/
+    border-radius: 0px;
+    /*Bild Radius ist hier lol*/
     display: block;
 }
 
@@ -286,48 +287,207 @@ body {
     flex-direction: column;
     gap: 12px;
 }
-/* ========== NOSTALGIA LAYOUT WIE VORLAGE ========== */
 
-.section-nostalgia .split-inner {
-  align-items: flex-start;          /* oben bündig wie Vorlage */
-}
+/* =========================
+   NOSTALGIA – LAYOUT FIXES
+   ========================= */
 
-/* Spalten */
-.section-nostalgia .nostalgia-left,
-.section-nostalgia .nostalgia-right {
-  flex: 1;
-}
-
-/* Links: Headline, Bild, Text untereinander */
+/* Mobile First: KEINE feste 400px-Spalte, sonst quetscht es */
 .section-nostalgia .nostalgia-left {
-  display: flex;
-  flex-direction: column;
+    width: 100%;
+    flex: 1;
 }
 
-/* Headline: 24px + Abstand 10px zum Bild */
-.section-nostalgia .nostalgia-title {
-  font-size: 24px;
-  margin: 0 0 10px 0;               /* 10px zwischen H2 und Bild */
-}
-
-/* Bild exakt 400x500, keine runden Ecken */
+/* Bild: bleibt auf Desktop fix, auf Mobile wird es responsive */
 .section-nostalgia .nostalgia-image img {
-  width: 400px;
-  height: 500px;
-  object-fit: cover;
-  border-radius: 0;                  /* keine Rundung */
-  display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
 }
 
-/* Abstand 20px zwischen Bild und Text */
+/* Text immer so breit wie das Bild */
 .section-nostalgia .nostalgia-description {
-  margin: 20px 0 0 0;                /* 20px zwischen Bild und Text */
+    max-width: 400px;
 }
 
-/* Nostalgia*/
-.section-nostalgia {
-    background-color: #ffffff;
+/* Mobile: Nostalgia-Grid mittig + nicht rechts gequetscht */
+@media (max-width: 767px) {
+
+    /* wichtig: dein globales container padding 50px ist zu viel am Handy */
+    .section-nostalgia .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Bild + Text sauber links/zentriert (wie du willst) */
+    .section-nostalgia .nostalgia-image img,
+    .section-nostalgia .nostalgia-description {
+        max-width: 100%;
+    }
+
+    /* Mobile Produkte: Grid zentrieren */
+    .section-nostalgia .nostalgia-products--mobile .product-grid-small {
+        width: 100%;
+        max-width: 520px;
+        /* optional: begrenzt die Zeilenlänge */
+        margin: 0 auto;
+        /* <-- zentriert */
+    }
 }
+
+/* =========================
+   DESKTOP / TABLET PRODUKT-KARTEN
+   ========================= */
+
+/* Produktbild in Nostalgia: 200x250 */
+.section-nostalgia .product-grid-small .product-media {
+    width: 200px;
+    height: 250px;
+    margin: 0 auto;
+    /* Bildbox mittig im Card */
+    position: relative;
+}
+
+.section-nostalgia .product-grid-small .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* oder 'cover' wenn du es füllen willst */
+    margin: 0;
+}
+
+/* Card soll nicht “mitwachsen” */
+.section-nostalgia .product-grid-small .product-card {
+    padding: 0;
+    /* damit 300px-Höhe besser steuerbar */
+    width: 200px;
+    /* Karte fix 200 breit */
+}
+
+/* Textbereich unter dem Bild (macht insgesamt ~300px Höhe) */
+.section-nostalgia .product-grid-small .product-title,
+.section-nostalgia .product-grid-small .product-price {
+    padding: 0 0;
+    margin: 6px 0 0 0;
+}
+
+/* Herz-Button sitzt weiterhin oben rechts der Card */
+.section-nostalgia .product-grid-small .product-like {
+    top: 10px;
+    right: 10px;
+}
+
+/* =========================
+   TABLET: smooth skalieren (nicht zu klein)
+   ========================= */
+
+/* ab Tablet: rechte Spalte sichtbar, Grid 3 Spalten,
+   aber Karten skalieren “smooth” zwischen 180 und 200px */
+@media (min-width: 768px) {
+
+    /* Abstand zwischen linker und rechter Spalte */
+    .section-nostalgia .split-inner {
+        gap: 120px;
+        /* wie gewünscht */
+        align-items: flex-start;
+    }
+
+    /* Rechte Seite soll die restliche Breite nehmen */
+    .section-nostalgia .nostalgia-right {
+        flex: 1;
+        min-width: 0;
+        /* wichtig gegen Overflow/Weißraum */
+    }
+
+    /* Grid soll die rechte Spalte AUSNUTZEN statt "max-content" */
+    .section-nostalgia .nostalgia-products--desktop .product-grid-small {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        justify-content: start;
+        /* linksbündig, kein "floaten" */
+        column-gap: 12px;
+        row-gap: 23px;
+        width: 100%;
+    }
+}
+
+/* Links wieder max 400px (wie Vorlage) */
+.section-nostalgia .nostalgia-left {
+    flex: 0 0 400px;
+    width: 400px;
+}
+
+/* Bild fix wie Vorlage */
+.section-nostalgia .nostalgia-image img {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+}
+
+/* Kartenbreite smooth: nicht kleiner als 180px, nicht größer als 200px */
+.section-nostalgia .product-grid-small .product-card {
+    width: clamp(180px, 18vw, 200px);
+}
+
+.section-nostalgia .product-grid-small .product-media {
+    width: clamp(180px, 18vw, 200px);
+    height: clamp(225px, 22.5vw, 250px);
+    /* proportional */
+}
+
+/* Grid: immer 3 pro Reihe (wie Vorlage) */
+.section-nostalgia .nostalgia-products--desktop .product-grid-small {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: 12px;
+    /* Abstand zwischen Produkten */
+    row-gap: 23px;
+    /* Abstand zwischen Reihen */
+    justify-content: start;
+    /* linksbündig wie Vorlage */
+}
+
+
+/* =========================
+   DESKTOP: “fixe” Maße (damit es nicht riesig wird)
+   ========================= */
+@media (min-width: 1024px) {
+
+    /* Desktop: Karten wirklich fix 200px */
+    .section-nostalgia .product-grid-small .product-card {
+        width: 200px;
+    }
+
+    .section-nostalgia .product-grid-small .product-media {
+        width: 200px;
+        height: 250px;
+    }
+}
+
+/* =========================
+   NOSTALGIA: Sichtbarkeit hart erzwingen
+   ========================= */
+
+/* Standard = Mobile (bis 767px) */
+.section-nostalgia .nostalgia-products--mobile {
+    display: block !important;
+}
+
+.section-nostalgia .nostalgia-products--desktop {
+    display: none !important;
+}
+
+/* Ab Tablet/Desktop */
+@media (min-width: 768px) {
+    .section-nostalgia .nostalgia-products--mobile {
+        display: none !important;
+    }
+
+    .section-nostalgia .nostalgia-products--desktop {
+        display: block !important;
+    }
+}
+
 
 /* How its made neutral */
 .section-how {
@@ -629,4 +789,83 @@ body {
     .footer-inner {
         flex-direction: column;
     }
+}
+/* Abstand wie in der Vorlage */
+.section-products{
+  padding-top: 130px;     /* Abstand nach dem Hero */
+  padding-bottom: 240px;  /* Abstand vor "Warum CHANDORA?" */
+}
+/* =========================
+   WHY CHANDORA – DESKTOP LAYOUT (Vorlage)
+   ========================= */
+
+@media (min-width: 768px) {
+  /* Damit Headline oben auf Höhe vom Bild startet (nicht vertikal zentriert) */
+  .section-why .split-inner {
+    align-items: flex-start; /* statt center */
+    gap: 48px;               /* Abstand Bild ↔ Textbereich */
+  }
+
+  /* Bild exakt 450x650 */
+  .section-why .split-image {
+    flex: 0 0 450px;         /* feste Breite */
+  }
+
+  .section-why .split-image img {
+    width: 450px;
+    height: 650px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Textblock soll mindestens so hoch sein wie das Bild */
+  .section-why .split-content {
+    min-height: 650px;       /* sorgt dafür: Bildhöhe = Textbereichhöhe */
+  }
+}
+@media (min-width: 768px) {
+  /* Überschrift */
+  .section-why .split-content h2 {
+    font-size: 40px;
+    margin: 0;              /* wichtig: keine Standard-Abstände */
+    line-height: 1.1;
+  }
+
+  /* Fließtext exakt wie Vorlage */
+  .section-why .split-content p {
+    font-size: 17px;
+    margin: 460px 0 0 0;    /* Abstand zwischen Überschrift und Text */
+    max-width: 620px;       /* optional, wirkt “wie Vorlage” */
+  }
+}
+@media (min-width: 768px) {
+  .section-why .btn-primary {
+    font-size: 25px;
+    margin-top: 30px;       /* Abstand Text → Button */
+    align-self: flex-start; /* Button links wie Vorlage */
+  }
+}
+/* =========================
+   WHY CHANDORA – MOBILE ORDER (H2 -> Bild -> Text -> Button)
+   ========================= */
+@media (max-width: 767px) {
+  .section-why .split-inner {
+    display: grid;
+    grid-template-areas:
+      "title"
+      "image"
+      "text"
+      "cta";
+    gap: 16px;
+  }
+
+  /* macht h2/p/a zu "direkten" Grid-Items */
+  .section-why .split-content {
+    display: contents;
+  }
+
+  .section-why .split-content h2 { grid-area: title; }
+  .section-why .split-image     { grid-area: image; }
+  .section-why .split-content p { grid-area: text; }
+  .section-why .split-content a { grid-area: cta; }
 }
