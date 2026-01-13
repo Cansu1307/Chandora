@@ -869,3 +869,55 @@ body {
   .section-why .split-content p { grid-area: text; }
   .section-why .split-content a { grid-area: cta; }
 }
+/* =========================
+   HOW ITS MADE – DESKTOP LAYOUT (Vorlage)
+   ========================= */
+@media (min-width: 768px) {
+
+  /* 92px Abstand links wie Vorlage */
+  .section-how .container {
+    padding-left: 92px;
+    padding-right: 50px; /* rechts wie dein Standard-Container */
+  }
+
+  /* Layout nicht vertikal zentrieren – oben starten */
+  .section-how .split-inner {
+    align-items: flex-start;
+    gap: 86px; /* Abstand Bild ↔ Textbereich */
+  }
+
+  /* Bild exakt 500x720 */
+  .section-how .split-image {
+    flex: 0 0 500px; /* feste Breite */
+  }
+
+  .section-how .split-image img {
+    width: 500px;
+    height: 720px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Textblock soll exakt so hoch sein wie das Bild */
+  .section-how .split-content {
+    min-height: 720px;
+  }
+
+  /* Überschrift ohne Default-Abstände */
+  .section-how .split-content h2 {
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  /* Abstand zwischen Überschrift und Text: 560px */
+  .section-how .split-content p {
+    margin: 560px 0 0 0;
+    max-width: 620px; /* optional: wirkt wie Vorlage */
+  }
+
+  /* Abstand zwischen Text und Button/Link: 34px */
+  .section-how .link-underline {
+    margin-top: 34px;
+    align-self: flex-start; /* linksbündig */
+  }
+}
