@@ -575,12 +575,11 @@ body {
 }
 
 /* Layout: Bild oben, Text darunter */
-.bracelet-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* Textbereich startet links */
-    gap: 16px;
+.bracelet-inner{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0; /* wir steuern Abstände gezielt über margins */
 }
 
 /* Bild nutzt die komplette Breite der Weißfläche (Viewport) */
@@ -594,22 +593,36 @@ body {
 }
 
 /* Text linksbündig + wieder angenehme Seiten-Paddings wie restliche Seite */
-.bracelet-text {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 16px;
-    text-align: left;
+/* Abstand Bild -> Textblock: 66px */
+.bracelet-text{
+  margin-top: 66px;
+  padding-left: 47px;   /* links Abstand 47 */
+  padding-right: 47px;  /* optional symmetrisch */
+  width: 100%;
+  max-width: none;
+  text-align: left;
+}
+
+/* Abstand Text -> Button: 18px */
+.section-bracelet .bracelet-text p{
+  margin: 0;
+  max-width: 620px; /* optional */
+}
+
+.section-bracelet .btn.btn-secondary{
+  display: inline-block;
+  margin-top: 18px;
 }
 
 
-.bracelet-quote {
-    font-style: italic;
-    font-size: 24px;
-    margin-top: 95px;
-    /* Abstand zum Button */
-    margin-bottom: 12px;
+.bracelet-quote{
+  width: 100%;
+  text-align: center;
+  font-style: italic;
+  font-size: 24px;
+  margin: 209px 0 0 0; /* 275 (Bild->Slogan) - 66 (Bild->Text) */
 }
+
 
 /* ========== FOOTER ========== */
 
@@ -911,7 +924,7 @@ body {
 
   /* Abstand zwischen Überschrift und Text: 560px */
   .section-how .split-content p {
-    margin: 560px 0 0 0;
+    margin: 530px 0 0 0;
     max-width: 620px; /* optional: wirkt wie Vorlage */
   }
 
@@ -919,5 +932,36 @@ body {
   .section-how .link-underline {
     margin-top: 34px;
     align-self: flex-start; /* linksbündig */
+  }
+}
+/* =========================
+   HOW ITS MADE – MOBILE ORDER
+   (H2 -> Bild -> Text -> Button)
+   ========================= */
+@media (max-width: 767px) {
+  .section-how .split-inner {
+    display: grid;
+    grid-template-areas:
+      "title"
+      "image"
+      "text"
+      "cta";
+    gap: 16px;
+  }
+
+  /* macht h2/p/a zu direkten Grid-Items */
+  .section-how .split-content {
+    display: contents;
+  }
+
+  .section-how .split-content h2 { grid-area: title; }
+  .section-how .split-image     { grid-area: image; }
+  .section-how .split-content p { grid-area: text; }
+  .section-how .link-underline  { grid-area: cta; }
+
+  /* optional: Bild auf Mobile wieder responsive */
+  .section-how .split-image img {
+    width: 100%;
+    height: auto;
   }
 }
