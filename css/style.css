@@ -90,6 +90,32 @@ body {
     background-color: #f5f5f5;
     transform: translateY(-1px);
 }
+/* Header: grundsätzlich etwas „luftiger“ */
+.header-inner{
+  padding: 18px 24px;
+  min-height: 72px;          /* sorgt für „mehr Höhe“ */
+}
+
+/* Mobile Header */
+@media (max-width: 767px){
+  .header-inner{
+    padding: 18px 16px;      /* mehr Höhe, weniger Seitenpadding */
+    min-height: 72px;
+  }
+
+  .logo-button{
+    font-size: 20px;         /* optional – wirkt wie Vorlage */
+  }
+
+  .icon-button{
+    padding: 10px;           /* größere Tap-Fläche */
+  }
+
+  .icon-button img{
+    width: 22px;
+    height: 22px;
+  }
+}
 
 /* ========== HERO ========== */
 
@@ -97,6 +123,81 @@ body {
     display: block;
     width: 100%;
     height: auto;
+}
+/* Hero bekommt eine definierte Höhe */
+.hero{
+  height: clamp(320px, 60vh, 720px);  /* skaliert je nach Bildschirm */
+  overflow: hidden;
+}
+
+/* Bild füllt den Hero-Container */
+.hero-image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                 /* wichtig */
+  object-position: 30% 30%;          /* Fokus: Gesicht/Model (anpassen) */
+  display: block;
+}
+
+/* Mobile: eher „Portrait-Hero“ */
+@media (max-width: 767px){
+  .hero{
+    height: 82vh;                    /* macht’s wie Vorlage deutlich höher */
+  }
+
+  .hero-image{
+    object-position: 50% 20%;        /* Fokus weiter nach oben (Gesicht) */
+  }
+}
+/* HERO: immer sauber responsiv + kontrollierter Ausschnitt */
+.hero{
+  width: 100%;
+}
+
+.hero-image{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile: Bild bekommt eine feste "Hero-Höhe" und wird gecroppt */
+@media (max-width: 767px){
+  .hero-image{
+    width: 100%;
+    height: 78vh;          /* Höhe vom Hero – anpassen */
+    max-height: 720px;     /* optional */
+    object-fit: cover;     /* wichtig: crop statt quetschen */
+    object-position: 20% 70%; /* <-- Fokus: mehr Richtung Handgelenk */
+  }
+}
+/* HERO: kein Padding/Margin drumherum */
+.hero { padding: 0; }
+.hero-image{
+  display: block;
+  width: 100%;
+  height: clamp(360px, 55vh, 650px); /* Höhe wie Vorlage-ish */
+  object-fit: cover;                 /* Cropping statt Verzerren */
+  object-position: 35% 70%;          /* <-- WICHTIG: zeigt Handgelenk (anpassen) */
+  transform: none;                   /* verhindert Spiegelung */
+}
+/* =========================
+   HERO – DESKTOP FIX (Produkt sichtbar)
+   ========================= */
+@media (min-width: 1024px) {
+  .hero {
+    height: 70vh;          /* <-- HIER steuerst du die Höhe */
+    max-height: 800px;     /* optional: damit es nicht zu riesig wird */
+    overflow: hidden;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Fokus nach UNTEN verschieben → Handgelenk sichtbar */
+    object-position: center 65%;
+  }
 }
 
 /* ========== SECTIONS & BUTTONS ========== */
@@ -202,7 +303,7 @@ body {
 
 .product-price {
     font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: 400;
     color: #000000;
     margin: 0;
 }
@@ -488,6 +589,11 @@ body {
     }
 }
 
+/* Abstand Text -> Produkte (Nostalgia Mobile & Desktop) */
+.section-nostalgia .nostalgia-description {
+  margin-bottom: 60px;   /* <-- HIER */
+}
+
 
 /* How its made neutral */
 .section-how {
@@ -559,6 +665,108 @@ body {
         gap: 18px;
     }
 }
+/* =========================
+   BENEFITS (3 BOXEN) – CLEAN & RESPONSIVE
+   ========================= */
+
+.section-benefits {
+  background: #ffffff;
+}
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.benefit-card {
+  background: #f4f4f4;
+  border-radius: 0;
+  padding: 26px 18px;
+  min-height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+/* Text bleibt immer im Kasten */
+.benefit-card h3,
+.benefit-card p {
+  max-width: 100%;
+}
+
+.benefit-card h3 {
+  margin: 0;
+  font-weight: 200;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+  font-size: 32px; /* Mobile/Default */
+}
+
+.benefit-card p {
+  margin: 10px 0 0;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #222;
+}
+
+/* Tablet: 3 Spalten */
+@media (min-width: 768px) {
+  .benefit-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+/* BENEFITS – MOBILE: Karten hoch wie Vorlage */
+@media (max-width: 767px) {
+
+  .benefit-grid{
+    gap: 24px;                 /* optional: mehr Abstand wie Vorlage */
+  }
+
+  .benefit-card{
+    min-height: 250px;         /* <-- HIER stellst du die Mobile-Höhe ein */
+    padding: 28px 24px;        /* optional: schöner Innenabstand */
+  }
+}
+
+/* Desktop: feste Maße + Abstände */
+@media (min-width: 1024px) {
+
+  .section-benefits{
+    padding-top: 160px;
+    padding-bottom: 220px;
+  }
+
+  .benefit-grid{
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
+    column-gap: 70px;
+    row-gap: 0;
+  }
+
+  .benefit-card{
+    width: 300px;
+    height: 325px;
+    min-height: 0;
+    padding: 20px 40px 0 40px; /* <-- 5px Abstand oben */
+    overflow: hidden;
+  }
+
+  /* Desktop Typo: skaliert passend */
+  .benefit-card h3{
+    font-size: clamp(28px, 3.2vw, 44px);
+  }
+
+  .benefit-card p{
+    font-size: clamp(14px, 1vw, 18px);
+  }
+}
+
 
 /* ========== BRACELET HERO ========== */
 
@@ -575,11 +783,12 @@ body {
 }
 
 /* Layout: Bild oben, Text darunter */
-.bracelet-inner{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0; /* wir steuern Abstände gezielt über margins */
+.bracelet-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    /* wir steuern Abstände gezielt über margins */
 }
 
 /* Bild nutzt die komplette Breite der Weißfläche (Viewport) */
@@ -594,33 +803,37 @@ body {
 
 /* Text linksbündig + wieder angenehme Seiten-Paddings wie restliche Seite */
 /* Abstand Bild -> Textblock: 66px */
-.bracelet-text{
-  margin-top: 66px;
-  padding-left: 47px;   /* links Abstand 47 */
-  padding-right: 47px;  /* optional symmetrisch */
-  width: 100%;
-  max-width: none;
-  text-align: left;
+.bracelet-text {
+    margin-top: 66px;
+    padding-left: 47px;
+    /* links Abstand 47 */
+    padding-right: 47px;
+    /* optional symmetrisch */
+    width: 100%;
+    max-width: none;
+    text-align: left;
 }
 
 /* Abstand Text -> Button: 18px */
-.section-bracelet .bracelet-text p{
-  margin: 0;
-  max-width: 620px; /* optional */
+.section-bracelet .bracelet-text p {
+    margin: 0;
+    max-width: 620px;
+    /* optional */
 }
 
-.section-bracelet .btn.btn-secondary{
-  display: inline-block;
-  margin-top: 18px;
+.section-bracelet .btn.btn-secondary {
+    display: inline-block;
+    margin-top: 18px;
 }
 
 
-.bracelet-quote{
-  width: 100%;
-  text-align: center;
-  font-style: italic;
-  font-size: 24px;
-  margin: 209px 0 0 0; /* 275 (Bild->Slogan) - 66 (Bild->Text) */
+.bracelet-quote {
+    width: 100%;
+    text-align: center;
+    font-style: italic;
+    font-size: 24px;
+    margin: 209px 0 0 0;
+    /* 275 (Bild->Slogan) - 66 (Bild->Text) */
 }
 
 
@@ -673,12 +886,29 @@ body {
     display: none;
 }
 
+/* Mobile Accordion wie Vorlage: nur Linien oben/unten */
 .legal--mobile details {
-    border-radius: 12px;
-    border: 1px solid #e4e4e4;
-    padding: 10px 12px;
-    background-color: #ffffff;
+    border: none;
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    border-radius: 0;
+    padding: 18px 0;
+    background: transparent;
 }
+
+/* Abstand/Look der Summary-Zeile */
+.legal--mobile summary {
+    padding: 0;
+    font-weight: 400;
+    /* wirkt wie Vorlage (nicht zu fett) */
+}
+
+/* Plus rechts bleibt (hast du schon) */
+
+.legal--mobile section+section details {
+    border-top: none;
+}
+
 
 .legal--mobile summary {
     list-style: none;
@@ -745,6 +975,172 @@ body {
     font-weight: 600;
 }
 
+/* Mobile/Tablet: Desktop-Bottom komplett aus */
+.footer-bottom--desktop {
+    display: none;
+}
+
+/* Footer: Desktop Layout wie Vorlage */
+@media (min-width: 1024px) {
+
+    /* Wichtig: rechts 70px Abstand wie Vorlage */
+    .site-footer .container {
+        padding-left: 50px;
+        /* links 50 */
+        padding-right: 70px;
+        /* rechts 70 */
+    }
+
+    /* TOP-Reihe: Listen links + Social rechts */
+    .footer-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    /* Listen nebeneinander, Abstand 39px */
+    .footer-links {
+        display: flex;
+        gap: 39px;
+    }
+
+    /* Footer-Brand Button links, Abstand 55px nach den Listen */
+    .footer-brand {
+        display: inline-block;
+        margin-top: 55px;
+        /* Abstand zu den Listen */
+        margin-bottom: 75px;
+        /* Abstand darunter */
+        text-decoration: none;
+        color: #111;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 56px;
+        /* ggf. anpassen bis es wie Vorlage wirkt */
+        line-height: 1;
+    }
+
+    /* Social rechts “andocken” */
+    .social-links {
+        justify-content: flex-end;
+    }
+
+    /* Mobile Accordions auf Desktop aus (hast du schon, bleibt) */
+    .legal--mobile {
+        display: none;
+    }
+}
+
+/* Listen nebeneinander, Abstand 39px */
+.footer-legal-desktop {
+    display: flex;
+    gap: 39px;
+    align-items: flex-start;
+}
+
+.site-footer {
+    padding-top: 80px;
+    /* statt 24px */
+    padding-bottom: 16px;
+}
+
+.footer-top--desktop .social-links--desktop {
+    display: none;
+}
+
+.footer-bottom--desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    /* sorgt: Icons & Text auf gleicher Höhe */
+    margin-top: 55px;
+    /* Abstand von Listen zur Bottom-Zeile */
+    margin-bottom: 15px;
+    /* Abstand nach unten */
+}
+
+.footer-home {
+    text-decoration: none;
+    color: #111;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 56px;
+    /* an Vorlage anpassen */
+    line-height: 1;
+    display: inline-block;
+}
+
+.footer-home:hover {
+    text-decoration: none;
+}
+
+/* Mobile: Icons sichtbar */
+.social-links--mobile {
+    display: flex;
+}
+
+/* Desktop: Mobile-Icons aus */
+@media (min-width: 1024px) {
+    .social-links--mobile {
+        display: none;
+    }
+}
+
+/* Standard-CHANDORA Link im Footer auf Desktop ausblenden */
+.site-footer .footer-home {
+    display: none;
+}
+
+/* Aber das CHANDORA im Desktop-Bottom soll sichtbar bleiben */
+.footer-bottom--desktop .footer-home {
+    display: inline-block;
+}
+
+@media (min-width: 1024px) {
+    .footer-bottom--desktop {
+        display: flex;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* Footer-Inhalt auf Mobile ohne große Seiteneinzüge */
+    .site-footer .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Icons links */
+    .social-links--mobile {
+        justify-content: flex-start;
+        margin-top: 109px;
+        /* falls du den Abstand nach Accordions brauchst */
+        margin-bottom: 30px;
+        /* Abstand Icons -> CHANDORA = 30 */
+    }
+
+    /* CHANDORA auf Mobile kleiner + links */
+    .site-footer>.footer-inner>.footer-home {
+        font-size: 40px;
+        /* kleiner als 56, an Vorlage anpassen */
+        line-height: 1;
+        letter-spacing: 0.18em;
+        display: inline-block;
+        text-align: left;
+        margin: 0;
+        /* wichtig: keine extra Abstände */
+    }
+
+}
+
+@media (max-width: 767px) {
+    .site-footer {
+        padding-top: 120px;
+    }
+}
+
 /* ========== RESPONSIVE: AB TABLET / DESKTOP ========== */
 
 @media (min-width: 768px) {
@@ -803,165 +1199,363 @@ body {
         flex-direction: column;
     }
 }
+
 /* Abstand wie in der Vorlage */
-.section-products{
-  padding-top: 130px;     /* Abstand nach dem Hero */
-  padding-bottom: 240px;  /* Abstand vor "Warum CHANDORA?" */
+.section-products {
+    padding-top: 130px;
+    /* Abstand nach dem Hero */
+    padding-bottom: 240px;
+    /* Abstand vor "Warum CHANDORA?" */
 }
+
 /* =========================
    WHY CHANDORA – DESKTOP LAYOUT (Vorlage)
    ========================= */
 
 @media (min-width: 768px) {
-  /* Damit Headline oben auf Höhe vom Bild startet (nicht vertikal zentriert) */
-  .section-why .split-inner {
-    align-items: flex-start; /* statt center */
-    gap: 48px;               /* Abstand Bild ↔ Textbereich */
-  }
 
-  /* Bild exakt 450x650 */
-  .section-why .split-image {
-    flex: 0 0 450px;         /* feste Breite */
-  }
+    /* Damit Headline oben auf Höhe vom Bild startet (nicht vertikal zentriert) */
+    .section-why .split-inner {
+        align-items: flex-start;
+        /* statt center */
+        gap: 48px;
+        /* Abstand Bild ↔ Textbereich */
+    }
 
-  .section-why .split-image img {
-    width: 450px;
-    height: 650px;
-    object-fit: cover;
-    display: block;
-  }
+    /* Bild exakt 450x650 */
+    .section-why .split-image {
+        flex: 0 0 450px;
+        /* feste Breite */
+    }
 
-  /* Textblock soll mindestens so hoch sein wie das Bild */
-  .section-why .split-content {
-    min-height: 650px;       /* sorgt dafür: Bildhöhe = Textbereichhöhe */
-  }
+    .section-why .split-image img {
+        width: 450px;
+        height: 650px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Textblock soll mindestens so hoch sein wie das Bild */
+    .section-why .split-content {
+        min-height: 650px;
+        /* sorgt dafür: Bildhöhe = Textbereichhöhe */
+    }
 }
+
 @media (min-width: 768px) {
-  /* Überschrift */
-  .section-why .split-content h2 {
-    font-size: 40px;
-    margin: 0;              /* wichtig: keine Standard-Abstände */
-    line-height: 1.1;
-  }
 
-  /* Fließtext exakt wie Vorlage */
-  .section-why .split-content p {
-    font-size: 17px;
-    margin: 460px 0 0 0;    /* Abstand zwischen Überschrift und Text */
-    max-width: 620px;       /* optional, wirkt “wie Vorlage” */
-  }
+    /* Überschrift */
+    .section-why .split-content h2 {
+        font-size: 40px;
+        margin: 0;
+        /* wichtig: keine Standard-Abstände */
+        line-height: 1.1;
+    }
+
+    /* Fließtext exakt wie Vorlage */
+    .section-why .split-content p {
+        font-size: 17px;
+        margin: 460px 0 0 0;
+        /* Abstand zwischen Überschrift und Text */
+        max-width: 620px;
+        /* optional, wirkt “wie Vorlage” */
+    }
 }
+
 @media (min-width: 768px) {
-  .section-why .btn-primary {
-    font-size: 25px;
-    margin-top: 30px;       /* Abstand Text → Button */
-    align-self: flex-start; /* Button links wie Vorlage */
-  }
+    .section-why .btn-primary {
+        font-size: 25px;
+        margin-top: 30px;
+        /* Abstand Text → Button */
+        align-self: flex-start;
+        /* Button links wie Vorlage */
+    }
 }
+
 /* =========================
    WHY CHANDORA – MOBILE ORDER (H2 -> Bild -> Text -> Button)
    ========================= */
 @media (max-width: 767px) {
-  .section-why .split-inner {
-    display: grid;
-    grid-template-areas:
-      "title"
-      "image"
-      "text"
-      "cta";
-    gap: 16px;
-  }
+    .section-why .split-inner {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "image"
+            "text"
+            "cta";
+        gap: 16px;
+    }
 
-  /* macht h2/p/a zu "direkten" Grid-Items */
-  .section-why .split-content {
-    display: contents;
-  }
+    /* macht h2/p/a zu "direkten" Grid-Items */
+    .section-why .split-content {
+        display: contents;
+    }
 
-  .section-why .split-content h2 { grid-area: title; }
-  .section-why .split-image     { grid-area: image; }
-  .section-why .split-content p { grid-area: text; }
-  .section-why .split-content a { grid-area: cta; }
+    .section-why .split-content h2 {
+        grid-area: title;
+    }
+
+    .section-why .split-image {
+        grid-area: image;
+    }
+
+    .section-why .split-content p {
+        grid-area: text;
+    }
+
+    .section-why .split-content a {
+        grid-area: cta;
+    }
 }
+@media (max-width: 767px) {
+
+  /* Container darf KEIN Padding haben */
+  .section-why .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Bild auf volle Viewport-Breite */
+  .section-why .split-image img {
+    width: 100vw;
+    max-width: none;
+    height: auto;
+    display: block;
+  }
+}
+@media (max-width: 767px) {
+
+  /* Textblock wieder mit normalem Seitenabstand */
+  .section-why .split-content p,
+  .section-why .split-content h2,
+  .section-why .split-content a {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: left;
+  }
+
+  /* Button links halten */
+  .section-why .btn-primary {
+    align-self: flex-start;
+  }
+}
+
 /* =========================
    HOW ITS MADE – DESKTOP LAYOUT (Vorlage)
    ========================= */
 @media (min-width: 768px) {
 
-  /* 92px Abstand links wie Vorlage */
-  .section-how .container {
-    padding-left: 92px;
-    padding-right: 50px; /* rechts wie dein Standard-Container */
-  }
+    /* 92px Abstand links wie Vorlage */
+    .section-how .container {
+        padding-left: 92px;
+        padding-right: 50px;
+        /* rechts wie dein Standard-Container */
+    }
 
-  /* Layout nicht vertikal zentrieren – oben starten */
-  .section-how .split-inner {
-    align-items: flex-start;
-    gap: 86px; /* Abstand Bild ↔ Textbereich */
-  }
+    /* Layout nicht vertikal zentrieren – oben starten */
+    .section-how .split-inner {
+        align-items: flex-start;
+        gap: 86px;
+        /* Abstand Bild ↔ Textbereich */
+    }
 
-  /* Bild exakt 500x720 */
-  .section-how .split-image {
-    flex: 0 0 500px; /* feste Breite */
-  }
+    /* Bild exakt 500x720 */
+    .section-how .split-image {
+        flex: 0 0 500px;
+        /* feste Breite */
+    }
 
-  .section-how .split-image img {
-    width: 500px;
-    height: 720px;
-    object-fit: cover;
-    display: block;
-  }
+    .section-how .split-image img {
+        width: 500px;
+        height: 720px;
+        object-fit: cover;
+        display: block;
+    }
 
-  /* Textblock soll exakt so hoch sein wie das Bild */
-  .section-how .split-content {
-    min-height: 720px;
-  }
+    /* Textblock soll exakt so hoch sein wie das Bild */
+    .section-how .split-content {
+        min-height: 720px;
+    }
 
-  /* Überschrift ohne Default-Abstände */
-  .section-how .split-content h2 {
-    margin: 0;
-    line-height: 1.1;
-  }
+    /* Überschrift ohne Default-Abstände */
+    .section-how .split-content h2 {
+        margin: 0;
+        line-height: 1.1;
+    }
 
-  /* Abstand zwischen Überschrift und Text: 560px */
-  .section-how .split-content p {
-    margin: 530px 0 0 0;
-    max-width: 620px; /* optional: wirkt wie Vorlage */
-  }
+    /* Abstand zwischen Überschrift und Text: 560px */
+    .section-how .split-content p {
+        margin: 530px 0 0 0;
+        max-width: 620px;
+        /* optional: wirkt wie Vorlage */
+    }
 
-  /* Abstand zwischen Text und Button/Link: 34px */
-  .section-how .link-underline {
-    margin-top: 34px;
-    align-self: flex-start; /* linksbündig */
-  }
+    /* Abstand zwischen Text und Button/Link: 34px */
+    .section-how .link-underline {
+        margin-top: 34px;
+        align-self: flex-start;
+        /* linksbündig */
+    }
 }
+
 /* =========================
    HOW ITS MADE – MOBILE ORDER
    (H2 -> Bild -> Text -> Button)
    ========================= */
 @media (max-width: 767px) {
-  .section-how .split-inner {
-    display: grid;
-    grid-template-areas:
-      "title"
-      "image"
-      "text"
-      "cta";
-    gap: 16px;
-  }
+    .section-how .split-inner {
+        display: grid;
+        grid-template-areas:
+            "title"
+            "image"
+            "text"
+            "cta";
+        gap: 16px;
+    }
 
-  /* macht h2/p/a zu direkten Grid-Items */
-  .section-how .split-content {
-    display: contents;
-  }
+    /* macht h2/p/a zu direkten Grid-Items */
+    .section-how .split-content {
+        display: contents;
+    }
 
-  .section-how .split-content h2 { grid-area: title; }
-  .section-how .split-image     { grid-area: image; }
-  .section-how .split-content p { grid-area: text; }
-  .section-how .link-underline  { grid-area: cta; }
+    .section-how .split-content h2 {
+        grid-area: title;
+    }
 
-  /* optional: Bild auf Mobile wieder responsive */
-  .section-how .split-image img {
-    width: 100%;
-    height: auto;
+    .section-how .split-image {
+        grid-area: image;
+    }
+
+    .section-how .split-content p {
+        grid-area: text;
+    }
+
+    .section-how .link-underline {
+        grid-area: cta;
+    }
+
+    /* optional: Bild auf Mobile wieder responsive */
+    .section-how .split-image img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* ========== FOOTER FIX: MOBILE vs DESKTOP ========== */
+
+/* Default: Desktop-Bottom aus (wird erst ab 1024px aktiv) */
+.footer-bottom--desktop {
+    display: none;
+}
+
+/* Mobile Icons default sichtbar */
+.social-links--mobile {
+    display: flex;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+    .site-footer {
+        padding-top: 120px;
+    }
+
+    .site-footer .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    /* Accordion Linien statt Box */
+    .legal--mobile details {
+        border: none;
+        border-top: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+        border-radius: 0;
+        padding: 18px 0;
+        background: transparent;
+    }
+
+    .legal--mobile section+section details {
+        border-top: none;
+    }
+
+    /* Icons links + Abstand zum CHANDORA = 30px */
+    .social-links--mobile {
+        justify-content: flex-start;
+        margin-bottom: 30px;
+    }
+
+    /* Mobile CHANDORA kleiner */
+    .site-footer>.footer-inner>.footer-home {
+        font-size: 40px;
+        line-height: 1;
+        text-decoration: none;
+        color: #111;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 600;
+        display: inline-block;
+    }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+
+    .site-footer {
+        padding-top: 80px;
+    }
+
+    /* Mobile-Bausteine aus */
+    .footer-accordions--mobile {
+        display: none;
+    }
+
+    .social-links--mobile {
+        display: none;
+    }
+
+    /* Desktop-Bottom an */
+    .footer-bottom--desktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 55px;
+        margin-bottom: 75px;
+    }
+
+    /* Nur Desktop-Brand zeigen (und den "normalen" Footer-Home unten ausblenden) */
+    .site-footer .footer-home {
+        display: none;
+    }
+
+    .footer-bottom--desktop .footer-home {
+        display: inline-block;
+    }
+}
+/* ===== Scroll Reveal (global) ===== */
+.scroll-reveal,
+.reveal-item {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Optional: andere Varianten */
+.reveal--scale { transform: scale(0.98); }
+.reveal--left  { transform: translateX(-24px); }
+.reveal--right { transform: translateX(24px); }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .reveal-item {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }

@@ -71,3 +71,31 @@ revealGroups.forEach(group => observer.observe(group));
 
 // Init
 updateBadge();
+// ===== SCROLL REVEAL (global, Sections + Stagger) =====
+const revealTargets = document.querySelectorAll(".scroll-reveal, .scroll-stagger");
+
+const revealObserver = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+
+      // Stagger: Kinder nacheinander
+      if (entry.target.classList.contains("scroll-stagger")) {
+        const items = entry.target.querySelectorAll(".reveal-item");
+        items.forEach((el, i) => {
+          el.style.transitionDelay = `${i * 120}ms`;
+          el.classList.add("is-visible");
+        });
+      } else {
+        // Single element
+        entry.target.classList.add("is-visible");
+      }
+
+      // nur einmal auslösen
+      obs.unobserve(entry.target);
+    });
+  },
+  { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+);
+
+revealTargets.forEach(el => revealObserver.observe(el));
